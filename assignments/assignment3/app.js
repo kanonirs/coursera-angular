@@ -35,14 +35,17 @@
     var ctrl = this;
 
     ctrl.found = [];
+    ctrl.isFound = true;
     ctrl.searchTerm = "";
     ctrl.search = function() {
       if (ctrl.searchTerm.length == 0) {
         ctrl.found = [];
+        ctrl.isFound = false;
       } else {
         var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
         promise.then(function(response) {
           ctrl.found = response;
+          ctrl.isFound = (ctrl.found.length > 0);
         }).catch(function(error) {
           console.log("Error");
         });
@@ -60,7 +63,9 @@
       scope: {
         foundItems: '<',
         onRemove: '&'
-      }
+      },
+      controller: NarrowItDownController,
+      controllerAs: 'ctrl'
     };
     return ddo;
   };

@@ -1,6 +1,9 @@
-<ul>
-  <li ng-repeat="item in foundItems">
-      {{ item.name }}
-      <button ng-click="onRemove({index: $index})">Remove</button>
-  </li>
-</ul>
+<div class="grid" style="margin-top: 100px">
+    <div class="row" ng-repeat="item in foundItems">
+        <div class="col-md-3">{{ item.name }}</div>
+        <div class="col-md-1">{{ item.short_name }}</div>
+        <div class="col-md-4">{{ item.description }}</div>
+        <div class="col-md-4"><button class="btn btn-primary" ng-click="onRemove({index: $index})">Don't want this one!</button></div>
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
